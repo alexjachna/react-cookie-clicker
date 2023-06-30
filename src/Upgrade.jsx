@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export function Upgrade({ cookies, setCookies, upgradeName, upgradeImage, cost, setCost }) {
+export function Upgrade({ cookies, setCookies, upgradeName, upgradeImage, cost, setCost, multiplier, setMultiplier, worth }) {
     const [amount, setAmount] = useState(0)
     const [canAfford, setCanAfford] = useState(false)
 
@@ -13,6 +13,7 @@ export function Upgrade({ cookies, setCookies, upgradeName, upgradeImage, cost, 
             setAmount((amount) => amount + 1)
             setCookies((cookies) => cookies - cost)
             setCost((cost) => Math.ceil(cost * 1.5))
+            setMultiplier((multiplier) => multiplier + worth)
         }
         else {
             alert('insufficient funds')

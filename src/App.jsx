@@ -13,23 +13,23 @@ export default function App() {
   const [multiplier, setMultiplier] = useState(0)
 
   useEffect(() => {
-    const timer = window.setInterval(() => {
-      setMultiplier(multiplier + 1);
+    const timer = setInterval(() => {
+      setCookies((cookies) => cookies + multiplier);
   }, 1000);
 
-  return () => window.clearInterval(timer);
-    }, [])
+    return () => clearInterval(timer);
+    }, [multiplier])
 
   return (
     <div id="main-container">
       <Cookie cookies={cookies} setCookies={setCookies} multiplier={multiplier} />
       
       <div id="upgrades-container">
-        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Cursor" upgradeImage="./public/cookie.png" cost={costA} setCost={setCostA} setMultiplier={setMultiplier}/>
-        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Grandma" upgradeImage="./public/grandma.png" cost={costB} setCost={setCostB}/>
-        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Farm" upgradeImage="./public/farm.png" cost={costC} setCost={setCostC}/>
-        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Mines" upgradeImage="./public/mines.png" cost={costD} setCost={setCostD}/>
-        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Factory" upgradeImage="./public/factory.png" cost={costE} setCost={setCostE}/>
+        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Cursor" upgradeImage="./public/cookie.png" cost={costA} setCost={setCostA} multiplier={multiplier} setMultiplier={setMultiplier} worth={1}/>
+        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Grandma" upgradeImage="./public/grandma.png" cost={costB} setCost={setCostB} multiplier={multiplier} setMultiplier={setMultiplier} worth={3}/>
+        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Farm" upgradeImage="./public/farm.png" cost={costC} setCost={setCostC} multiplier={multiplier} setMultiplier={setMultiplier} worth={10}/>
+        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Mines" upgradeImage="./public/mines.png" cost={costD} setCost={setCostD} multiplier={multiplier} setMultiplier={setMultiplier} worth={40}/>
+        <Upgrade cookies={cookies} setCookies={setCookies} upgradeName="Factory" upgradeImage="./public/factory.png" cost={costE} setCost={setCostE} multiplier={multiplier} setMultiplier={setMultiplier} worth={100}/>
       </div>
     </div>  
   )
