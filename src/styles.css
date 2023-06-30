@@ -65,6 +65,11 @@ body {
     justify-content: space-evenly;
     align-items: center;
     color:white;
+    cursor: pointer;
+}
+
+.upgrade.disabled {
+    opacity: 0.5
 }
 
 .upgrade img {
